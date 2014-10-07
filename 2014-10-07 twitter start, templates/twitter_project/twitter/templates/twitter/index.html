@@ -1,0 +1,15 @@
+<h1>Twitter Feed for user {{ user }}</h1>
+
+<form action='/process/' method='post'>
+	{% csrf_token %}
+	<p><textarea name='tweet'></textarea></p>
+	<p><input type='submit' value='Tweet' /></p>
+</form>
+<hr/>
+{% if tweets %}
+	{% for t in tweets %}
+		<p>{{ t.upper }}</p>
+	{% endfor %}
+{% else %}
+	<p>Looser... Tweet something! </p>
+{% endif %}
