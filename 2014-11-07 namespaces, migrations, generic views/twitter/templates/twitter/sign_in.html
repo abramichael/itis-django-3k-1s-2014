@@ -1,0 +1,12 @@
+<h1>Sign in</h1>
+
+{% if next %}
+<form action="{% url 'sign_in' %}?next={{ next }}" method='POST'>
+{% else %}
+<form action="{% url 'sign_in' %}" method='POST'>
+{% endif %}
+
+	{% csrf_token %}
+	{{ f.as_p }}
+	<input type="submit" value="sign in" />
+</form>
