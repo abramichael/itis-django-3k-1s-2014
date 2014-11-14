@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <form
+          action="{% url 'edit_avatar' %}"
+          method="POST"
+          enctype="multipart/form-data" >
+        {% csrf_token %}
+
+        <p><img src="{{ image.url }}"></p> }}
+
+        {{ form.as_p }}
+        <input type="submit" value="send" />
+
+    </form>
+
+</body>
+</html>
