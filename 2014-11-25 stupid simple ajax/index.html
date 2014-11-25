@@ -1,0 +1,27 @@
+{% load static %}
+<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<h1>Twitter Feed for user {{ user }}</h1>
+<marquee>TESTEST</marquee>
+<p><a href="{% url 'sign_out' %}">Sign out</a></p>
+<p><a href="{% url 'index' %}">Home</a></p>
+<p><a href="{% url 'analytics:index' %}">Analytics Home</a></p>
+
+<p><a href="{% url 'get_users' %}" onclick="showusers();">Users</a></p>
+<p><div id="showUsers"></div></p>
+
+<form action="{% url 'process'%}" method='post' id="tweetform">
+	{% csrf_token %}
+	<p><textarea name='tweet'></textarea></p>
+	<p><input type='submit' id="submitTweet" onclick="AjaxFormRequest('result_div_id')" value='Tweet' /></p>
+</form>
+
+<hr/>
+{% if tweets %}
+	{% for t in tweets %}
+		<p><i>{{ t.p_date }}</i>: {{ t.text }}</p>
+	{% endfor %}
+{% else %}
+	<p>Looser... Tweet something! </p>
+{% endif %}
