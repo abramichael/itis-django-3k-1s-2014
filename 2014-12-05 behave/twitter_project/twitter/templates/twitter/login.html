@@ -1,0 +1,17 @@
+{% extends 'twitter/application.html' %}
+
+{% block mainarea %}
+<a href="{% url 'twitter:registration' %}">Registration</a>
+
+{% if next %}
+<form action="{% url 'twitter:login' %}?next={{ next }}" method="POST">
+{% else %}
+<form action="{% url 'twitter:login' %}" method="POST">
+{% endif %}
+
+	{% csrf_token %}
+	{{ f.as_p }}
+	<input type="submit" value="Log in" />
+
+</form>
+{% endblock %}

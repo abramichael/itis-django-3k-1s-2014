@@ -1,0 +1,20 @@
+{% extends 'twitter/application.html' %}
+
+
+{% block mainarea %}
+<a href="{% url 'twitter:login' %}">Login</a><br/>
+<p class="btn-danger span3">{{ error_message }}</p><br/><br/>
+<form method="POST" action="{% url 'twitter:registration' %}">
+	{% csrf_token %}
+	Username<br/>
+	<input type="text" name="username"/><br/>
+	Email<br/>
+	<input type="email" name="email"/><br/>
+	Password<br/>
+	<input type="password" name="password"/><br/>
+	Confirm password<br/>
+	<input type="password" name="password2"/><br/>
+	<input type="submit" value="Register"/>
+</form>
+
+{% endblock%}

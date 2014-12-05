@@ -1,0 +1,18 @@
+{% extends 'twitter/application.html' %}
+
+{% block mainarea %}
+<img src="{{ user.userinfo.avatar.url }}" width="20%"/>
+<a href="{% url 'twitter:logout' %}">Logout</a><br/>
+<p><b>{{ er30 }}</b></p>
+<form action="{% url 'twitter:home' %}" method='POST'>{% csrf_token %}
+	{{ f.as_p }}
+	<p><input type="submit" value="Tweet"/></p>
+</form>
+<hr>
+{% for t in tweets %}
+	<p><b>{{ t.user }}</b>: {{ t.text }}</p>
+	<p><i>Published on: {{ t.published_on }} </i></p>
+	<hr/>
+{% endfor %}
+
+{% endblock %}

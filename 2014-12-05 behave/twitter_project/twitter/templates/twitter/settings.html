@@ -1,0 +1,5 @@
+<form action="{% url  'twitter:settings' %}" method="POST">
+{% csrf_token %}
+{{ f.as_p }}
+<input type="submit" value="save"/>
+</form>
